@@ -1,3 +1,12 @@
+export class PostRequestProduct {
+
+    constructor(
+        public title: string, 
+        public desc: string, 
+        public price: number) {
+
+    }
+}
 export class Product {
 
     constructor(
