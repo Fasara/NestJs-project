@@ -10,7 +10,6 @@ export class ProductsController {
     @Post()
     addProduct(@Body() postRequestProduct: PostRequestProduct) 
     {
-        console.log('controller::addProduct');
         const generatedId = this.producstService.insertProduct(
             postRequestProduct.title, 
             postRequestProduct.desc, 
@@ -19,9 +18,8 @@ export class ProductsController {
         return { id: generatedId };
     }
 
-    @Get('all')
+    @Get()
     getAllProducts() {
-        console.log('controller::getAllProducts');
         return this.producstService.getProducts();
     }
 
