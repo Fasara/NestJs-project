@@ -7,6 +7,7 @@ export class PostRequestProduct {
 
     }
 }
+
 export class Product {
 
     constructor(
