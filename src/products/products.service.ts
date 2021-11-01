@@ -1,10 +1,27 @@
-import { Injectable, NotFoundException, Patch } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 
 import { Product } from "./dto/add-product.dto";
 
 @Injectable()
 export class ProductsService {
-    private products: Product[] = [];
+    private readonly products: Product[] = [
+        {
+            id: "1234",
+            title: "This is a test",
+            desc: "See if it works",
+            price: 345
+        },
+        {
+            id: "56789",
+            title: "This is another test",
+            desc: "Learing nestjs",
+            price: 345
+        }
+    ];
+
+    findAll(): Product[]{
+        return this.products;
+    }
 
     insertProduct(title: string, desc: string, price: number){
         const prodId = Math.random().toString();
@@ -23,18 +40,12 @@ export class ProductsService {
         return { ...product };
     }
 
-    // updateProduct(prodId : string, title: string, desc: string, price: number) {
-
-
-    // }
-
     private findProduct(id: string) {
         const product = this.products.find(prod => prod.id === id);
         if(!product) {
             throw new NotFoundException('Could not find product');
         }
         return product;
-
     }
 
 }

@@ -1,19 +1,19 @@
-import { Body, Controller, Get, Post, Param, Patch } from '@nestjs/common';
+import { Body, Controller, Get, Post, Param, Patch, Delete } from '@nestjs/common';
 
 import { ProductsService } from './products.service';
-import { PostRequestProduct, Product } from './dto/add-product.dto';
+import { AddProductDto, Product } from './dto/add-product.dto';
 
 @Controller('products')
 export class ProductsController {
     constructor(private readonly producstService: ProductsService){}
 
     @Post()
-    addProduct(@Body() postRequestProduct: PostRequestProduct) 
+    addProduct(@Body() addProductDto: AddProductDto) 
     {
         const generatedId = this.producstService.insertProduct(
-            postRequestProduct.title, 
-            postRequestProduct.desc, 
-            postRequestProduct.price
+            addProductDto.title, 
+            addProductDto.desc, 
+            addProductDto.price
         );
         return { id: generatedId };
     }
@@ -28,11 +28,12 @@ export class ProductsController {
         return this.producstService.getSingleProduct(productId);
     }
 
-    @Patch(':id')
-    updateProduct(
-        @Param('id') prodId: string,
-        @Body() product: Product
-    ){
-}
+    // @Patch(':id')
+    // updateProduct(
+    //     @Param('id') prodId: string,
+    //     @Body() product: Product
+    // ){
 
+    // @Delete(':id')
+    // deleteProduct(@Param())
 }

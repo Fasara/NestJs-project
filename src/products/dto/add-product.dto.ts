@@ -1,4 +1,4 @@
-export class PostRequestProduct {
+export class AddProductDto {
 
     constructor(
         public title: string, 
