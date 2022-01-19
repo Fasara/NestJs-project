@@ -12,15 +12,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       isGlobal: true,
       ignoreEnvFile: true
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'rotacloud',
-      database: 'test',
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 'localhost',
+    //   port: 3306,
+    //   username: 'root',
+    //   password: 'rotacloud',
+    //   database: 'test',
 
-    })
+    // })
   ],
   controllers: [AppController],
   providers: [AppService],
